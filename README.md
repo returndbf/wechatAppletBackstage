@@ -1,0 +1,2 @@
+# wechatAppletBackstage
+Manage WeChatApplet data
