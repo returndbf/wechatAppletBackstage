@@ -1,6 +1,10 @@
 import { request } from "./HttpRequest";
-export function getHomeBanner(){
+export function getSentence(page,pageSize=5){
     return request({
-        url:"/getBannerImg"
+        url:"/rainbowFart/RainbowFart",
+        params:{
+            page,
+            pageSize,
+        }
     })
 }
