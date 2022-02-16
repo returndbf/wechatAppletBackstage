@@ -9,9 +9,11 @@
         label="author"
         width="120"
     />
-    <el-table-column prop="sentence" label="sentence" width="600"/>
+    <el-table-column prop="sentence" label="sentence" width="500"/>
     <el-table-column prop="delFlag" label="delFlag" width="120"/>
+    <el-table-column prop="delTime" label="delTime" width="120"/>
     <el-table-column fixed="right" label="Operations" width="120">
+
       <template #default>
         <el-button type="text" size="small" @click="getAllRainbowFart">Detail</el-button>
         <el-button type="text" size="small">Edit</el-button>
