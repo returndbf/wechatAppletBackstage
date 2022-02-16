@@ -1,6 +1,6 @@
 <template>
-  <el-table :data="tableData" style="width: 100%">
-    <el-table-column fixed prop="date" label="Date" width="150" />
+  <el-table :data="tableData" stripe style="width: 100%">
+    <el-table-column  prop="date" label="Date" width="150" />
     <el-table-column prop="name" label="Name" width="120" />
     <el-table-column prop="state" label="State" width="120" />
     <el-table-column show-overflow-tooltip prop="city" label="City" width="120" />
