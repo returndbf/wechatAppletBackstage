@@ -16,4 +16,13 @@ export class RainbowFart {
         this.sentence=sentence
 
     }
+    setAdder(adder){
+        this.adder = adder
+    }
+    setAuthor(author){
+        this.author = author
+    }
+    setSentence(sentence){
+        this.sentence = sentence
+    }
 }
