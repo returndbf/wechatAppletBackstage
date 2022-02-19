@@ -29,5 +29,6 @@ export default {
 }
 .layout-container-demo .el-main {
   padding: 0;
+  overflow: hidden;
 }
 </style>

@@ -1,6 +1,5 @@
 import axios from "axios";
 export  function request(config){
-    console.log(axios)
     const instance = axios.create({
         baseURL:"https://dabenfeng.top/",
         timeout:5000
