@@ -26,7 +26,7 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="3-1" @click="blogManage">内容管理</el-menu-item>
-              <el-menu-item index="3-2">没有了</el-menu-item>
+              <el-menu-item index="3-2" @click="noneClick">没有了</el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
         </el-menu>
@@ -37,6 +37,7 @@
 <script>
 import { Message, Menu as IconMenu, Setting } from "@element-plus/icons-vue";
 import router from "../../router/index.js"
+import {ElMessageBox} from "element-plus";
 export default {
   components:{
     Message,
@@ -59,12 +60,18 @@ export default {
     function blogManage(){
       router.push({path:'/main/blogManage'})
     }
+    function noneClick(){
+      ElMessageBox.alert('一个前端分页,一个后端分页,都没做分页个数限制,因为后端的分页没做完善', '总结', {
+        confirmButtonText: '确认'
+      })
+    }
     return{
       chooseContentManage,
       addChoose,
       rainbowFartManage,
       addRainbowFart,
-      blogManage
+      blogManage,
+      noneClick
     }
   }
 }

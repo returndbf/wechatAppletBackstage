@@ -28,7 +28,7 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">Query</el-button>
+        <el-button type="primary" @click="onSubmit">确认</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -96,6 +96,6 @@ export default {
 .form {
   margin-top: 10%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 </style>

@@ -17,8 +17,10 @@ export function getChooseByPrefix(prefix){
 export function insertChoose(choose) {
     return request({
         url:"/insertChoose",
-        data:{
-               choose
+        method:"post",
+        params:{
+              prefix: choose.prefix,
+           content: choose.content
         }
     })
 }

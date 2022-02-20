@@ -56,4 +56,12 @@ const router = createRouter({
     history: createWebHistory(),
     routes: routes
   });
+router.beforeEach((to, from ) => {
+    if (to.path === '/login') return true
+    if (localStorage.getItem("user")!=="login") {
+        return false
+    } else {
+        return true
+    }
+})
 export default router

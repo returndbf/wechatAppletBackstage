@@ -2,65 +2,68 @@
   <div class="form">
 
     <el-form :model="formInline" class="demo-form-inline" label-width="100px">
-      <el-form-item label="前缀">
-        <el-select v-model="formInline.adder" placeholder="前缀">
+      <el-form-item label="前缀快选">
+        <el-select v-model="formInline.prefix" placeholder="前缀">
           <el-option
-              v-for="item in adderList"
-              :label="item.adder"
-              :value="item.adder"
-              :key="item.id"
+              v-for="item in prefixs"
+              :label="item"
+              :value="item"
+              :key="item"
           ></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="前缀">
         <el-input
-            v-model="formInline.author"
+            v-model="formInline.prefix"
             placeholder="前缀"
             class="input"
         ></el-input>
       </el-form-item>
 
-      <el-form-item label="彩虹屁">
+      <el-form-item label="内容">
         <el-input
-            v-model="formInline.sentence"
+            v-model="formInline.content"
             :rows="2"
             type="textarea"
-            placeholder="输入彩虹屁"
+            placeholder="内容"
             class="text_area"
         />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">Query</el-button>
+        <el-button type="primary" @click="onSubmit">确认</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-import { reactive, ref } from "vue";
-import { addSentence } from "../../network/RainbowFart";
-import { RainbowFart } from "../../components/rainbowFart/RainbowFart";
+import {onBeforeMount, reactive, ref} from "vue";
+import {Choose} from "./Choose";
 import { ElMessage } from 'element-plus'
+import {getAllPrefix,insertChoose} from "../../network/Choose";
+
 export default {
   setup() {
+    onBeforeMount(()=>{
+      getAllPrefix().then(res=>{
+         prefixs.value= res.data
+      }).catch(err=>{
+        console.log(err)
+      })
+    })
     const formInline = reactive({
-      author: null,
-      adder: null,
-      sentence: null,
+      prefix: null,
+      content: null,
     });
-    //添加者
-    const adderList = ref([
-      { id: 1, adder: "大笨峰" },
-      { id: 2, adder: "小王" },
-    ]);
+    //前缀列表
+    const prefixs = ref([]);
     //提交事件
     function onSubmit() {
-      const rainbowFart = new RainbowFart();
-      rainbowFart.setAdder(formInline.adder);
-      rainbowFart.setAuthor(formInline.author);
-      rainbowFart.setSentence(formInline.sentence);
+      const choose = new Choose();
+      choose.prefix=formInline.prefix
+      choose.content = formInline.content
       //调用接口
-      addSentence(rainbowFart)
+      insertChoose(choose)
           .then((result) => {
             if (result.code === 1) {
               ElMessage({
@@ -81,8 +84,8 @@ export default {
     }
     return {
       formInline,
-      adderList,
       onSubmit,
+      prefixs
     };
   },
 };
@@ -98,6 +101,6 @@ export default {
 .form {
   margin-top: 10%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 </style>

@@ -143,4 +143,8 @@ export default {
   display: flex;
   justify-content: center;
 }
+.el-pagination{
+  position: absolute;
+  bottom: 10px;
+}
 </style>
